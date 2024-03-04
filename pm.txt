@@ -1,0 +1,73 @@
+fatfs_storage:
+  address: 0xf0000
+  affiliation:
+  - disk
+  end_address: 0x100000
+  extra_params:
+    disk_cache_size: 0x1000
+    disk_name: SD
+    disk_read_only: 0x0
+    disk_sector_size: 0x200
+  placement:
+    align:
+      start: 0x1000
+    before:
+    - end
+  region: external_flash
+  size: 0x10000
+
+////////////////////////////////////////////
+mcuboot:
+  address: 0x0
+  size: 0xA000
+  region: flash_primary
+mcuboot_pad:
+  address: 0xa000
+  size: 0x200
+app:
+  address: 0xa200
+  size: 0xefe00
+mcuboot_primary:
+  orig_span: &id001
+  - mcuboot_pad
+  - app
+  span: *id001
+  address: 0xA000
+  size: 0xf0000
+  region: flash_primary
+mcuboot_primary_app:
+  orig_span: &id002
+  - app
+  span: *id002
+  address: 0xa200
+  size: 0xefe00
+factory_data:
+  address: 0xfa000
+  size: 0x1000
+  region: flash_primary
+settings_storage:
+  address: 0xfb000
+  size: 0x5000
+  region: flash_primary
+mcuboot_secondary:
+  address: 0x00
+  size: 0xf0000
+  device: W25Q16JV
+  region: external_flash
+fatfs_storage:
+  address: 0xf0000
+  affiliation:
+  - disk
+  end_address: 0xf8000
+  extra_params:
+    disk_cache_size: 0x1000
+    disk_name: SD
+    disk_read_only: 0x0
+    disk_sector_size: 0x200
+  region: external_flash
+  size: 0x8000
+external_flash:
+  address: 0xf8000
+  size: 0x108000
+  device: W25Q16JV
+  region: external_flash

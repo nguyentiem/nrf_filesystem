@@ -1,0 +1,22 @@
+// device tree overlay for Spyder custom board 
+// here indicate the external flash is used by board in App image 
+// 
+/ {
+    chosen {
+        nordic,pm-ext-flash = &w25q16jv;  
+    };
+    
+};
+
+// / {
+// 	msc_disk0 {
+// 		status="okay";
+// 		compatible = "zephyr,flash-disk";
+// 		partition = <&>;
+// 		disk-name = "SD";
+// 		/* cache-size == page erase size */
+// 		cache-size = <4096>;
+// 	};
+// };
+
+ 
